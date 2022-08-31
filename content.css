@@ -1,0 +1,188 @@
+.eli_green {
+    color: rgb(102, 152, 13);  
+}
+.eli_red {
+    color: rgb(249, 34, 1);
+}
+#eli_society_overlay {
+    position: fixed;
+    left: 5px;
+    bottom: 5px;
+    padding: 7px;
+    z-index: 199;
+    color: rgb(222, 203, 161);
+    background-color: rgba(59, 50, 26, 0.8);
+    border: 1px solid rgb(31, 25, 12);
+    border-radius: 5px;
+    font-size: 15px;
+    text-align: left;
+    line-height: 120%;
+ }
+#eli_society_overlay p {
+    margin: 0px;
+    padding: 0px;
+}
+#eli_society_overlay p:first-of-type {
+    font-weight: bold;
+}
+#eli_spire_overlay {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 130px);
+    color: rgb(222, 203, 161);
+    background-color: rgba(59, 50, 26, 0.8);
+    border: 1px solid rgb(31, 25, 12);
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+    padding: 7px;
+    border-radius: 5px;
+    z-index: 199;
+}
+#eli_spire_overlay ul {
+    list-style: none;
+    color: rgb(222, 203, 161);
+    padding: 0px;
+    margin: 0px;
+}
+#eli_spire_overlay li {
+    display: inline-block;
+    width: 162px;
+}
+#eli_spire_chance {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(440px, 124px);
+    display: block;
+    background-color: rgba(59, 50, 26, 0.8);
+    padding: 7px;
+    border-radius: 5px;
+    font-size: 30px;
+    font-weight: bold;
+    z-index: 199;
+}
+#eli_architect_overlay {
+    position: fixed;
+    top: 60px;
+    left: 180px;
+    width: 312px;
+    height: 78px;
+    background-color: rgba(59, 50, 26, 0.8);
+    border: 1px solid rgb(31, 25, 12);
+    border-radius: 5px;
+    z-index: 199;
+}
+#eli_architect_overlay button {
+    background: none;
+    border: none;
+}
+#eli_architect_overlay p {
+    font-size: 15px;
+    margin: 5px;
+    color: rgb(222, 203, 161);
+}
+#eli_alert_overlay {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: block;
+    width: 480px;
+    color: rgb(222, 203, 161);
+    background-color: rgb(63, 54, 29);
+    font-size: 15px;
+    text-align: center;
+    padding: 20px;
+    border: 1px solid rgb(31, 25, 12);
+    border-radius: 5px;
+    z-index: 199;
+}
+#eli_alert_overlay p {
+    text-align: left;
+    cursor: inherit;
+}
+#eli_alert_overlay p:first-of-type {
+    font-weight: bold;
+}
+button.eli_ui {
+    width: 150px;
+    color: rgb(222, 203, 161);
+    background-color: rgb(102, 152, 13);
+    border-color: rgb(117, 174, 16);
+    border-width: 3px;
+    font-size: 15px;
+    font-weight: bold;
+    text-shadow: 0px 2px rgb(31, 25, 12);
+    cursor: inherit;
+}
+button.eli_ui:hover {
+    background-color: rgb(117, 174, 16);
+    border-color: rgb(132, 196, 19);
+}
+#eli_dialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: block;
+    width: 320px;
+    color: rgb(222, 203, 161);
+    background-color: rgb(63, 54, 29);
+    font-size: 15px;
+    text-align: left;
+    padding: 20px;
+    border: 1px solid rgb(31, 25, 12);
+    border-radius: 5px;
+    z-index: 199;
+}
+#eli_dialog label {
+    margin: 20px 0px;
+    cursor: inherit;
+}
+#eli_dialog img {
+    position: absolute;
+    top: 110px;
+    left: 314px;
+}
+#eli_dialog input {
+    margin: 20px 0px;
+    width: 276px;
+    color: rgb(222, 203, 161);
+    font-size: 15px;
+    background-color: rgb(31, 25, 12); 
+    border: 1px solid rgb(222, 203, 161);
+    border-radius: 5px;
+    padding: 5px 32px 5px 10px;
+}
+#eli_dialog button:first-of-type {
+    margin-right: 20px;
+}
+#eli_context_menu {
+    width: 150px;
+    position: absolute;
+    color: rgb(222, 203, 161);
+    font-size: 15px;
+    text-align: center;
+    background-color: rgb(63, 54, 29);
+    border-color: rgb(31, 25, 12);
+    border-width: 1px 1px 0px 1px;
+    border-style: solid;
+    border-radius: 5px 5px 0px 0px;
+    z-index: 199;
+}
+.eli_context_separator {
+    height: 1px;
+    background-color: rgb(102, 90, 60);
+    margin: 0px 10px;
+}
+.eli_context_entry {
+    padding: 5px 0px;
+}
+.eli_context_entry:first-child {
+    margin-top: 7px;
+}
+.eli_context_entry:hover {
+    background-color: rgb(50, 42, 22);
+}
