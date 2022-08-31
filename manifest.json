@@ -20,7 +20,7 @@
    "browser_specific_settings": {
       "gecko": {
          "update_url": "https://github.com/garrykay/elvenheper/blob/main/update.json",
-         "strict_min_version": "48.0"
+         "strict_min_version": "54.0"
       }
    }
 }
