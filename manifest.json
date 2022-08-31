@@ -19,7 +19,7 @@
    "web_accessible_resources": ["elvenArchitect.png", "eye-crossed.png", "eye.png"]
    "browser_specific_settings": {
       "gecko": {
-         "update_url": "https://example.com/updates.json"
+         "update_url": "https://github.com/garrykay/elvenheper/blob/main/update.json"
       }
    }
 }
