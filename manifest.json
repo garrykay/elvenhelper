@@ -17,4 +17,9 @@
    "content_security_policy": "default-src; script-src 'self'; connect-src 'self' https://docs.google.com/",
   	"version": "0.0.4",
    "web_accessible_resources": ["elvenArchitect.png", "eye-crossed.png", "eye.png"]
+   "browser_specific_settings": {
+      "gecko": {
+         "update_url": "https://example.com/updates.json"
+      }
+   }
 }
