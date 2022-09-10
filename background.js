@@ -354,7 +354,7 @@ class ELI_WonderHandler {
 			let wonder = this.playerWonders.getWonder(i);
 			if (wonder.filled) {
 				let societyWonder = this.societyWonders.find(wonder.owner, wonder.name);
-				if (!societyWonder || societyWonder.size > wonder.size) {
+				if (!societyWonder || societyWonder.size == wonder.size) {
 					if (!this.upgradable.includes(wonder.name)) {
 						upgradable.push(wonder.name);
 						this.upgradable.push(wonder.name);
