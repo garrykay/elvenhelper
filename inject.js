@@ -17,16 +17,10 @@ window.XMLHttpRequest.prototype.open = function(method, url) {
 					if (arr[i].__class__ == 'ServerResponseVO') {
 						let reqMethod = arr[i].requestClass + "." + arr[i].requestMethod;
 						switch(reqMethod) {
-						case "CityResourcesService.getResources":
 						case "StartupService.getData":
 						case "AncientWonderService.getOtherPlayerAncientWonders":
 						case "AncientWonderService.phaseUpdated":
 						case "AncientWonderService.getPhases":
-						case "SpireService.getEncounter":
-						case "SpireDiplomacyService.getData":
-						case "SpireDiplomacyService.submit":
-						case "SpireService.getData":
-						case "SpireService.updateMap":
 							let msg = {
 								method: reqMethod,
 								response: arr[i].responseData,

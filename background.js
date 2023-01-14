@@ -638,10 +638,6 @@ browser.runtime.onMessage.addListener((message, sender) => {
 				startupHandler.startup(message.response);
 			} else if (world.valid) {
 				switch (message.method) {
-					case "CityResourcesService.getResources":
-						let goods = new ELI_Goods(world);
-						goods.update(message.response);
-						break;
 					case "AncientWonderService.getOtherPlayerAncientWonders":
 						message.response = message.response.ancientWonderPhases;
 					case "AncientWonderService.phaseUpdated":
