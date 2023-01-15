@@ -11,7 +11,6 @@ class ELI_World {
 		this.tab = w.tab || -1;
 		this.server = w.server || '';
 		this.key = w.key || '';
-		this.password = w.password || '';
 		if (w.url) this.server = w.url.replace(/https?:\/\/(\w+)\..*/, '$1');
 	}
 
@@ -31,8 +30,6 @@ class ELI_World {
 	server;
 	// the key of the Wonder Society google spreadsheet 
 	key;
-	// the password to decrypt the key
-	password;
 }
 
 // -----------------------------------------------------------------------
@@ -651,7 +648,6 @@ browser.runtime.onMessage.addListener((message, sender) => {
 						}
 						break;
 					default:
-						console.log(message.method);
 						break;
 				}
 			}
