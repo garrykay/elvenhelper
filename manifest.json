@@ -15,8 +15,8 @@
    } ],
    "permissions": ["storage", "tabs", "*://*.elvenar.com/game*",	"https://docs.google.com/spreadsheets/d/*"],
    "content_security_policy": "default-src; script-src 'self'; connect-src 'self' https://docs.google.com/",
-  	"version": "0.0.4",
-   "web_accessible_resources": ["elvenArchitect.png", "eye-crossed.png", "eye.png"],
+  "version": "0.0.5",
+   "web_accessible_resources": ["elvenArchitect.png"],
    "browser_specific_settings": {
       "gecko": {
          "update_url": "https://raw.githubusercontent.com/garrykay/elvenheper/main/update.json",

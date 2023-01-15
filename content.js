@@ -1,98 +1,5 @@
 'use strict';
 
-// a dialog window with a text/password input and OK and Cancel buttons
-class ELI_Dialog {
-	constructor() {
-		let element = document.querySelector('#eli_dialog') || this.init();
-		element.style.display = 'block';
-	}
-
-	init() {
-		let dialog = document.createElement('div');
-		dialog.id = 'eli_dialog';
-		dialog.addEventListener('mousemove', evt => evt.stopPropagation());
-		let game = document.querySelector('#openfl-content');
-		if (game) dialog.style.cursor = game.style.cursor;
-		let para = document.createElement('p');
-		para.textContent = 'Wonder Society';
-		dialog.appendChild(para);
-		let label = document.createElement('label');
-		label.htmlFor = 'eli_password';
-		label.textContent = 'Enter your Wonder Society password:';
-		dialog.appendChild(label);
-		let input = document.createElement('input');
-		input.id = 'eli_password';
-		input.type = 'password';
-		input.addEventListener('keyup', evt => evt.stopPropagation());
-		dialog.appendChild(input);
-		let eye = document.createElement('img');
-		eye.src = browser.runtime.getURL('eye.png');
-		eye.alt = 'Show or hide password';
-		eye.addEventListener('click', () => {
-			if (input.type == 'password') {
-				eye.src = browser.runtime.getURL('eye-crossed.png');
-				input.type = 'text';
-			} else {
-				eye.src = browser.runtime.getURL('eye.png');
-				input.type = 'password';
-			}
-		});
-		dialog.appendChild(eye);
-		let ok = document.createElement('button');
-		ok.className = 'eli_ui';
-		ok.textContent = 'OK';
-		ok.addEventListener('click', () => {
-			let message = {method: 'WonderSociety.password', response: input.value};
-			let event = new CustomEvent('ELI', {detail: message});
-			window.dispatchEvent(event);
-			dialog.style.display = 'none'
-			input.value = '';
-			input.type = 'password';
-			eye.src = browser.runtime.getURL('eye.png'); 
-		});
-		dialog.appendChild(ok);
-		let cancel = document.createElement('button');
-		cancel.className = 'eli_ui';
-		cancel.textContent = 'Cancel';
-		cancel.addEventListener('click', () => {
-			dialog.style.display = 'none';
-			input.value = '';
-			input.type = 'password';
-			eye.src = browser.runtime.getURL('eye.png'); 
-		});
-		dialog.appendChild(cancel);
-		return document.body.appendChild(dialog);
-	}
-}
-
-// adds a menu entry above the existing context menu
-class ELI_ContextMenu {
-	constructor(x, y) {
-		this.element = document.querySelector('#eli_context_menu') || this.init();
-		this.element.style.top = `${y - 22}px`;
-		this.element.style.left = `${x + 3}px`;
-		this.element.style.display = 'block';
-	}
-
-	init() {
-		let parent = document.querySelector('#openfl-content');
-		let contextMenu = document.createElement('div');
-		contextMenu.id = 'eli_context_menu';
-		if (parent) contextMenu.style.cursor = parent.style.cursor;
-		let entry = document.createElement('div');
-		entry.className = 'eli_context_entry';
-		entry.textContent = 'WS Password...';
-		entry.addEventListener('click', () => new ELI_Dialog);
-		contextMenu.appendChild(entry);
-		let separator = document.createElement('div');
-		separator.className = 'eli_context_separator';
-		contextMenu.appendChild(separator);
-		return (parent || document.body).appendChild(contextMenu);
-	}
-
-	element;
-}
-
 // A window in the lower left corner that permanently displays the Wonder Society targets
 // Only for Wonder Society members of fellowships with registered Wonder Society spreadsheets
 class ELI_SocietyOverlay {
@@ -136,62 +43,6 @@ class ELI_SocietyOverlay {
 		} else {
 			element.style.display = 'none';
 		}
-	}
-}
-
-// Makes suggestions for Spire Diplomacy and calculates the chance for sucess
-class ELI_SpireOverlay {
-	constructor(slots) {
-		let game = document.querySelector('#openfl-content');
-		let cursor = game ? game.style.cursor : 'pointer';
-		let overlay = document.querySelector('#eli_spire_overlay') || this.initSlots(cursor);
-		let chance = document.querySelector('#eli_spire_chance') || this.initChance(cursor);
-		this.display(overlay, chance, slots);
-	}
-
-	initSlots(cursor) {
-		// should be a list
-		let overlay = document.createElement('div');
-		overlay.id = 'eli_spire_overlay';
-		overlay.style.cursor = cursor;
-		let list = document.createElement('ul');
-		overlay.appendChild(list);
-		let cell = document.createElement('li');
-		list.appendChild(cell);
-		for (let i = 0; i < 4; i++) {
-			list.appendChild(cell.cloneNode(false));			
-		}
-		return document.body.appendChild(overlay);
-	}
-
-	initChance(cursor) {
-		let overlay = document.createElement('div');
-		overlay.id = 'eli_spire_chance';
-		overlay.style.cursor = cursor;
-		return document.body.appendChild(overlay);
-	}
-
-	display(overlay, chance, slots) {
-		let spireSlots = overlay.querySelectorAll('li');
-		if (slots && slots.length == 6) {
-			for (let i = 0; i < 5; i++) spireSlots[i].textContent = slots[i];
-			chance.textContent = `${slots[5]}%`;
-			chance.style.color = this.getColor(slots[5]);
-			overlay.style.display = 'block';
-			chance.style.display = 'block';
-		} else {
-			overlay.style.display = 'none';
-			chance.style.display = 'none';
-		}
-	}
-
-	getColor(percent) {
-		let factor = percent * 1.5 - 50;
-		if (factor < 0) factor = 0;
-		let red = 249 - 1.47 * factor;
-		let green = 34 + 1.18 * factor;
-		let blue = 1 + 0.12 * factor;
-		return `rgb(${red},${green},${blue})`;
 	}
 }
 
@@ -277,9 +128,6 @@ class ELI_AlertOverlay {
 browser.runtime.onMessage.addListener(message => {
 	if (message) {
 		switch(message.type) {
-		case 'SPIRE':
-			new ELI_SpireOverlay(message.slots);
-			break;
 		case 'ARCHITECT':
 			new ELI_ArchitectOverlay(message.citymap);
 			break;
@@ -289,34 +137,13 @@ browser.runtime.onMessage.addListener(message => {
 		case 'ALERT':
 			new ELI_AlertOverlay(message.caption, message.text);
 			break;
-		case 'PROMPT':
-			new ELI_Dialog;
-			break;
 		default:
 			break;
 		}
 	}
 });
 
-window.addEventListener('ELI', evt => {
-	if (evt.detail == 'LOAD') new ELI_SpireOverlay;
-	else browser.runtime.sendMessage(evt.detail);
-});
-
-window.addEventListener('contextmenu', evt => new ELI_ContextMenu(evt.x, evt.y));
-
-window.addEventListener('click', () => {
-	let context = document.querySelector('#eli_context_menu');
-	if (context) context.style.display = 'none';
-});
-
-window.addEventListener('keydown', evt => {
-	if (evt.key == 'Escape') {
-		let context = document.querySelector('#eli_context_menu');
-		if (context) context.style.display = 'none';
-	};
-});
-
+window.addEventListener('ELI', evt => browser.runtime.sendMessage(evt.detail));
 
 let script = document.createElement('script');
 script.src = browser.runtime.getURL('inject.js');
