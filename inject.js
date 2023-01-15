@@ -37,11 +37,3 @@ window.XMLHttpRequest.prototype.open = function(method, url) {
 	});
 	return oldXHROpen.apply(this, arguments);
 }
-
-let oldConsoleInfo = console.info;
-console.info = function() {
-	let event = new CustomEvent("ELI", {detail: 'LOAD'});
-	window.dispatchEvent(event);
-	oldConsoleInfo.apply(this, arguments);
-}
-
