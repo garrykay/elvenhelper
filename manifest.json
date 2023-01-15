@@ -19,8 +19,9 @@
    "web_accessible_resources": ["elvenArchitect.png"],
    "browser_specific_settings": {
       "gecko": {
-         "update_url": "https://raw.githubusercontent.com/garrykay/elvenheper/main/update.json",
-         "strict_min_version": "54.0"
+         "update_url": "https://raw.githubusercontent.com/garrykay/elvenhelper/main/update.json",
+         "strict_min_version": "54.0",
+         "id": "{68ec9de2-4f0b-4b0a-b67e-765a7e0bbd08}"
       }
    }
 }
