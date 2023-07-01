@@ -602,7 +602,7 @@ class ELI_Citymap {
 // -----------------------------------------------------------------------
 
 browser.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
-	if (tab.status === 'complete' && tab.url.match(/elvenar\.com\/game/ )) {
+	if (tab && tab.status === 'complete' && tab.url.match(/elvenar\.com\/game/ )) {
 		browser.storage.local.get('worlds')
 		.then(value => {
 			let v = value || {};
